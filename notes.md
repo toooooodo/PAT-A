@@ -85,3 +85,6 @@ BFS(u){
 	}
 }
 ```
+## 1013 Battle Over Cities (25 分)
+统计连通分量个数
+可使用DFS/BFS
