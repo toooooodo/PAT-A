@@ -88,3 +88,75 @@ BFS(u){
 ## 1013 Battle Over Cities (25 分)
 统计连通分量个数
 可使用DFS/BFS
+## 1014 Waiting in Line (30 分)
+考察队列
+**如果一个客户在17:00以及以后还没有开始服务就不再服务输出sorry；如果这个服务已经开始，无论时间多长都要等他服务完毕。**
+计时循环体内三个步骤：
+- 1）服务完的出队
+- 2）待服务的入队
+	- 有空窗口
+	- 还有人
+	- 还没到时间
+- 3）初始化队首的start_time和finish_time
+
+计时循环体结束的条件：
+- 1）五点之后
+- 2）队首有人正在服务
+
+判断是否被服务的条件：
+- 1）start_time >= 9 * 60
+- 2）start_time == -1
+## 1016 Phone Bills (25 分)
+排序->筛选出合法的记录->计算费用
+计算费用时从00:00:00到dd:hh:mm计算可以避免跨天的问题，比如01:12:00到02:02:00
+```c++
+double calculate(record a) {
+	double total = a.date * 60 * toll[24] + a.min * toll[a.hour];
+	for (int i = 0; i < a.hour; i++) {
+		total += toll[i] * 60;
+	}
+	return total / 100;
+}
+```
+## 1017 Queueing at Bank (25 分)
+windows数组记录窗口结束服务的时间
+
+**顾客等待时间计算：**
+```c++
+customers[index].waiting_time = max(windows[min_index] - customers[index].time_stamp, 0);
+```
+- 顾客到达时间比窗口结束服务时间晚->不需要等待
+- 顾客到达时间比窗口结束服务时间早->需要等待
+
+**窗口结束服务时间更新：**
+```c++
+windows[min_index] = max(windows[min_index], customers[index].time_stamp) + customers[index].processing_time * 60;
+```
+- 顾客不等待->```customers[index].time_stamp+customers[index].processing_time * 60```
+- 顾客等待->```windows[min_index]+customers[index].processing_time * 60```
+## 1018 Public Bike Management (30 分)
+**Dijkstra+DFS**
+```c++
+// 有盈余
+if (bike[station] - perf >= 0) {
+	back += bike[station] - perf;
+}
+// 有亏损
+else {
+	int need = perf - bike[station];
+	/*
+	前面的盈余不足以抵亏损
+	亏损增加，盈余置0
+	*/
+	if (need > back) {
+		send += need - back;
+		back = 0;
+	}
+	/*
+	前面的盈余足以抵亏损
+	亏损不变，盈余减少
+	*/
+	else {
+		back -= need;
+	}
+}
