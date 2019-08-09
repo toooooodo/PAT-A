@@ -160,3 +160,26 @@ else {
 		back -= need;
 	}
 }
+```
+## 1021 Deepest Root (25 分)
+进制转换，注意当radix>10时，如16，取余后有11、12、13等，不能将11、12、13的各位数字分开。
+## 1022 Digital Library (30 分)
+本题思路很简单，但输入的处理有些坑。
+- cin
+	- cin>> 可以从键盘读取想要的数据，以空格，tab键，以及换行来作为分隔符
+	- 需要注意的是，当从缓冲区中读入数据的时候，如果缓冲区的第一个字符是空格，tab键，以及换行这些**分隔符**的时候，cin>>会将其**忽略**掉并从缓冲区中清除，继续读取下一个字符，如果缓冲区为空，那么cin会继续等待，如果读取成功，字符后面的**分隔符**是**残留**在缓冲区中的，cin>>不做处理。
+- getline
+	- ```istream& getline (istream& is, string& str, char delim);```
+	- ``` istream& getline (istream& is, string& str);```
+	- Extracts characters from is and stores them into str **until the delimitation character delim is found (or the newline character, '\n', for (2)).**
+	- The extraction also stops if the end of file is reached in is or if some other error occurs during the input operation.
+ 	- **If the delimiter is found, it is extracted and discarded** (i.e. it is not stored and the next input operation will begin after it).
+	- Note that any content in str before the call is replaced by the newly extracted sequence.
+
+**示例：**
+```c++
+cin >> n;
+getchar();
+getline(cin, id);
+```
+cin处理后'\n'残留在缓冲区中，故需要getchar()。否则getline函数读入的是'\n'。
