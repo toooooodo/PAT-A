@@ -187,7 +187,10 @@ cin处理后'\n'残留在缓冲区中，故需要getchar()。否则getline函数
 >  It is guaranteed that all the integers are in the range of **long int**.
 
 **long int** 即 `long`
+
 思路：
 - 先将第一个数组全部读入，再逐个读入第二个数组。记第二个数组的当前元素是`tmp`，并事先计算出中位数的位置`med`。用`count`记录已经遍历了多少个数，用`index`记录当前第一个数组的位置。
 - 读入`tmp`后，先循环第一个数组，条件是数组的`index`位置值比`tmp`小，同时更新index和count，若```count==med```则`[index]`是中位数。否则跳出循环后，```count++```，若此时```count==med```，则`tmp`是中位数。
 - 若将第二个数组全部读完后，还没有将第一个数组遍历完，则中位数在第一个数组中，此时需要接着遍历第一个数组，直到`count==med`，`[index]`是中位数。
+## 1038 Recover the Smallest Number (30 分)
+**贪心算法**，排序函数设计很巧妙，呜呜呜。
