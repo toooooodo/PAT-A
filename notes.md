@@ -197,3 +197,25 @@ cin处理后'\n'残留在缓冲区中，故需要getchar()。否则getline函数
 ## 1033 To Fill or Not to Fill (25 分)
 贪心算法
 《算法笔记 上机训练实战指南》**P152**
+## 1040 Longest Symmetric String (25 分)
+**动态规划**
+## 1044 Shopping in Mars (25 分)
+**二分法**
+upper_bound函数返回在[L,R)内第一个大于x的位置。
+```c++
+int upper_bound(int left, int right, int x) {
+	/*
+	return: [left, right], 返回right代表未找到
+	*/
+	while (left < right) {
+		int mid = (left + right) / 2;
+		if (sum[mid] > x)
+			right = mid;
+		else
+			left = mid + 1;
+	}
+	return left; //或者return right
+}
+```
+## 1045 Favorite Color Stripe (30 分)
+**动态规划** 最长公共子序列（LCS）的变形。
