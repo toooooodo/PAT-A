@@ -223,3 +223,23 @@ int upper_bound(int left, int right, int x) {
 string容易超时，数据量大时最好使用char[]。
 ## 1049 Counting Ones (30 分)
 直接暴力解会超时，应该找规律。
+## 1052 Linked List Sorting (25 分)
+链表排序，使用静态链表。
+```c++
+struct node {
+	int key;
+	int addr, next;
+	bool flag;
+	node() : flag (false) {}
+}lst[MAX];
+```
+其中`flag`表示结点在链表中是否出现。
+对结点进行排序：
+```c++
+bool cmp(node a, node b) {
+	if (a.flag == false || b.flag == false)
+		return a.flag > b.flag;
+	else
+		return a.key < b.key;
+}
+```
