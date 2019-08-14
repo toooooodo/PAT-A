@@ -219,3 +219,7 @@ int upper_bound(int left, int right, int x) {
 ```
 ## 1045 Favorite Color Stripe (30 分)
 **动态规划** 最长公共子序列（LCS）的变形。
+## 1047 Student List for Course (25 分)
+string容易超时，数据量大时最好使用char[]。
+## 1049 Counting Ones (30 分)
+直接暴力解会超时，应该找规律。
