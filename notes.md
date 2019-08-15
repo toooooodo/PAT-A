@@ -243,3 +243,17 @@ bool cmp(node a, node b) {
 		return a.key < b.key;
 }
 ```
+## 1055 The World's Richest (25 分)
+> M的范围仅在100以内，因此可以进行预处理，即将每个年龄中财富在前100名全部存储在`valid`数组中，后面查询的操作可以在新数组中进行。
+```c++
+sort(lst, lst + n, cmp);
+for (int i = 0; i < n; i++) {
+	if (age[lst[i].age] < 100) {
+		age[lst[i].age]++;
+		valid[valid_n++] = lst[i];
+	}
+}
+```
+## 1056 Mice and Rice (25 分)
+**队列应用** 
+若本轮共分成`group`个组，则本轮淘汰的老鼠排名为`group + 1`。
