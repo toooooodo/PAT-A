@@ -257,3 +257,30 @@ for (int i = 0; i < n; i++) {
 ## 1056 Mice and Rice (25 分)
 **队列应用** 
 若本轮共分成`group`个组，则本轮淘汰的老鼠排名为`group + 1`。
+## 1057 Stack (30 分)
+**分块思想**
+将有序序列划分成$\lceil$$\sqrt N$$\rceil$块，每块元素个数不超过$\lfloor$$\sqrt N$$\rfloor$。
+定义一个统计数组`block[]`，`block[i]`代表第`i`块中存在的元素个数。
+定义一个数组`table[]`，`table[x]`表示整数`x`的当前存在个数。
+- 在线插入：
+```c++
+block[x / BLOCK_NUM]++;
+table[x]++;
+```
+- 在线查找第pos个元素：
+```c++
+int sum = 0, index = 0;
+while (sum + block[index] < pos) {
+	sum += block[index++];
+}
+int num = index * BLOCK_NUM;
+while (sum + table[num] < pos) {
+	sum += table[num++];
+}
+return num;
+```
+## 1063 Set Similarity (25 分)
+输出% -->
+```c++
+printf("%%");
+```
