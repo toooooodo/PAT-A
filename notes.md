@@ -284,3 +284,13 @@ return num;
 ```c++
 printf("%%");
 ```
+## 1064 Complete Binary Search Tree (30 分)
+**完全二叉排序树**的中序遍历
+## 1065 A+B and C (64bit) (20 分)
+用Python直接过，C++要注意`long long`溢出。
+``` c++
+if (a > 0 && b > 0 && a + b <= 0)
+	printf("Case #%d: true\n", i + 1);
+else if (a < 0 && b < 0 && a + b >= 0)
+	printf("Case #%d: false\n", i + 1);
+```
