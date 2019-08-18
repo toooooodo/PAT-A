@@ -294,3 +294,7 @@ if (a > 0 && b > 0 && a + b <= 0)
 else if (a < 0 && b < 0 && a + b >= 0)
 	printf("Case #%d: false\n", i + 1);
 ```
+## 1067 Sort with Swap(0, i) (25 分)
+`pos[x] = i;`表示`x`在`i`号位置上。
+## 1069 The Black Hole of Numbers (20 分)
+注意输入6174
