@@ -243,7 +243,9 @@ bool cmp(node a, node b) {
 		return a.key < b.key;
 }
 ```
+
 ## 1055 The World's Richest (25 分)
+
 > M的范围仅在100以内，因此可以进行预处理，即将每个年龄中财富在前100名全部存储在`valid`数组中，后面查询的操作可以在新数组中进行。
 ```c++
 sort(lst, lst + n, cmp);
@@ -295,6 +297,36 @@ else if (a < 0 && b < 0 && a + b >= 0)
 	printf("Case #%d: false\n", i + 1);
 ```
 ## 1067 Sort with Swap(0, i) (25 分)
+
 `pos[x] = i;`表示`x`在`i`号位置上。
+
 ## 1069 The Black Hole of Numbers (20 分)
+
 注意输入6174
+
+## 1072 Gas Station (30 分)
+
+最短路径
+
+## 1074 Reversing Linked List (25 分)
+
+**反转链表** 每k个反转
+
+```c++
+int reverse(int head, int n, int k) {
+    if (n < k)
+        return head;
+    int tail = head;
+    int tmp, last, next;
+    tmp = last = head;
+    next = lst[head].next;
+    for (int i = 0; i < k - 1; i++) {
+        tmp = next;
+        next = lst[tmp].next;
+        lst[tmp].next = last;
+        last = tmp;
+    }
+    lst[tail].next = reverse(next, n - k, k);
+    return tmp;
+}
+```
