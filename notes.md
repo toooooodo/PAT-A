@@ -330,3 +330,11 @@ int reverse(int head, int n, int k) {
     return tmp;
 }
 ```
+
+## 1078 Hashing (25 分)
+
+平方探测法：`M = (a + step * step) % table_size`，若`step`从`0`到`table_size - 1`都没有找到位置，那么对于`>=table_size`也不可能找到位置。
+
+## 1085 Perfect Sequence (25 分)
+
+和1044一样，upper_bound找到`[left, right)`内第一个大于x的位置。
