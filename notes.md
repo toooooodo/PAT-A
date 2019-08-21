@@ -292,9 +292,9 @@ printf("%%");
 用Python直接过，C++要注意`long long`溢出。
 ``` c++
 if (a > 0 && b > 0 && a + b <= 0)
-	printf("Case #%d: true\n", i + 1);
+    printf("Case #%d: true\n", i + 1);
 else if (a < 0 && b < 0 && a + b >= 0)
-	printf("Case #%d: false\n", i + 1);
+    printf("Case #%d: false\n", i + 1);
 ```
 ## 1067 Sort with Swap(0, i) (25 分)
 
@@ -338,3 +338,34 @@ int reverse(int head, int n, int k) {
 ## 1085 Perfect Sequence (25 分)
 
 和1044一样，upper_bound找到`[left, right)`内第一个大于x的位置。
+
+## 1087 All Roads Lead to Rome (30 分)
+
+Dijkstra + DFS
+
+## 1089 Insert or Merge (25 分)
+
+merge sort
+
+```c++
+void merge_sort(int n, int a[]) {
+    for (int step = 2; step / 2 < n; step *= 2) {
+        for (int i = 0; i < n; i += step) {
+            sort(a + i, a+min(i+step,n));
+        }
+    }
+}
+```
+
+## 1091 Acute Stroke (30 分)
+
+BFS，三维数组。
+`step`控制方向
+
+```c++
+int step[3][6] = {
+    {0,0,0,1,0,-1},
+    {0,0,1,0,-1,0},
+    {1,-1,0,0,0,0},
+};
+```
