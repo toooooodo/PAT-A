@@ -12,20 +12,20 @@
 - 寻找合适的进制时要使用二分查找。
 ```c++
 while (low <= high) {
-	long long mid = (low + high) / 2;
-	long long convert_result = convert(n2, mid);
-	if (convert_result == goal) {
-		cout << mid << endl;
-		flag = false;
-		break;
-	}
-	// 一定要判断convert_result < 0，溢出说明当前进制太大
-	else if (convert_result < 0 || convert_result > goal) {
-		high = mid - 1;
-	}
-	else {
-		low = mid + 1;
-	}
+    long long mid = (low + high) / 2;
+    long long convert_result = convert(n2, mid);
+    if (convert_result == goal) {
+        cout << mid << endl;
+        flag = false;
+        break;
+    }
+    // 一定要判断convert_result < 0，溢出说明当前进制太大
+    else if (convert_result < 0 || convert_result > goal) {
+        high = mid - 1;
+    }
+    else {
+        low = mid + 1;
+    }
 }
 ```
 
@@ -33,36 +33,36 @@ while (low <= high) {
 考察图的DFS
 ```c++
 void dfs(int index, int &head, int &total_weight, int &p_num) {
-	visited[index] = true;
-	p_num++;
-	if (weight[index] > weight[head]) {
-		head = index;
-	}
-	for (int i = 0; i < total_p; i++) {
-		if (graph[i][index] != 0) {
-			total_weight += graph[i][index];
-			/*消除已经走过的边*/
-			graph[i][index] = graph[index][i] = 0;
-			if (visited[i] == false)
-				dfs(i, head, total_weight, p_num);
-		}
-	}
+    visited[index] = true;
+    p_num++;
+    if (weight[index] > weight[head]) {
+        head = index;
+    }
+    for (int i = 0; i < total_p; i++) {
+        if (graph[i][index] != 0) {
+            total_weight += graph[i][index];
+            /*消除已经走过的边*/
+            graph[i][index] = graph[index][i] = 0;
+            if (visited[i] == false)
+                dfs(i, head, total_weight, p_num);
+        }
+    }
 }
 ```
 **图的DFS模板:**
 ```c++
 DFS(U){
-	vis[u]=true;
-	for(从u出发能到达的顶点v){
-		if vis[v]==false
-			DFS[v]
-	}
+    vis[u]=true;
+    for(从u出发能到达的顶点v){
+        if vis[v]==false
+            DFS[v]
+    }
 }
 DFSTrave(G){
-	for(G的所有顶点u){
-		if vis[u]==false
-			DFS(u);
-	}
+    for(G的所有顶点u){
+        if vis[u]==false
+            DFS(u);
+    }
 }
 ```
 本题还有一个坑，通话记录不超过1000条，说明共有不超过2000个人，所以MAX=2000。
@@ -70,19 +70,19 @@ DFSTrave(G){
 图的BFS
 ```c++
 BFS(u){
-	queue q;
-	q.push(u);
-	inq[u]=true;
-	while(q.empty()==false){
-		f=q.front();
-		q.pop();
-		for(从f出发可能到达的顶点v){
-			if (inq[v]==false){
-				q.push(v);
-				inq[v]=true;
-			}
-		}
-	}
+    queue q;
+    q.push(u);
+    inq[u]=true;
+    while(q.empty()==false){
+        f=q.front();
+        q.pop();
+        for(从f出发可能到达的顶点v){
+            if (inq[v]==false){
+                q.push(v);
+                inq[v]=true;
+            }
+        }
+    }
 }
 ```
 ## 1013 Battle Over Cities (25 分)
@@ -273,11 +273,11 @@ table[x]++;
 ```c++
 int sum = 0, index = 0;
 while (sum + block[index] < pos) {
-	sum += block[index++];
+    sum += block[index++];
 }
 int num = index * BLOCK_NUM;
 while (sum + table[num] < pos) {
-	sum += table[num++];
+    sum += table[num++];
 }
 return num;
 ```
@@ -368,4 +368,56 @@ int step[3][6] = {
     {0,0,1,0,-1,0},
     {1,-1,0,0,0,0},
 };
+```
+
+## 1093 Count PAT's (25 分)
+
+`count += (p[i] * t[i]) % 1000000007;`会溢出，正确写法是：`count = (count + (p[i] * t[i]) % 1000000007) % 1000000007;`
+
+## 1095 Cars on Campus (30 分)
+
+和1016 Phone Bills (25 分)思路相同，先将记录按照ID，时间的顺序排序。
+
+```c++
+bool cmp(record a, record b) {
+    if (a.id != b.id)
+        return a.id < b.id;
+    else
+        return a.time < b.time;
+}
+```
+
+## 1098 Insertion or Heap Sort (25 分)
+
+堆排序
+
+```c++
+void perc_down(int n, int i) {
+    int tmp, child;
+    for (tmp = heap[i]; i * 2 + 1 < n; i = child) {
+        child = i * 2 + 1;
+        if (child != n - 1 && heap[i * 2 + 1] < heap[i * 2 + 2])
+            child++;
+        if (heap[child] > tmp)
+            heap[i] = heap[child];
+        else
+            break;
+    }
+    heap[i] = tmp;
+}
+
+void heap_sort(int n) {
+    bool flg = false;
+    for (int i = n / 2; i >= 0; i--)
+        perc_down(n, i);
+    for (int i = n - 1; i >= 0; i--) {
+        if (i != n - 1 && check(n, heap)) {
+            flg = true;
+        }
+        swap(heap[0], heap[i]);
+        perc_down(i, 0);
+        if (flg)
+            break;
+    }
+}
 ```
