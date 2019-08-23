@@ -139,26 +139,26 @@ windows[min_index] = max(windows[min_index], customers[index].time_stamp) + cust
 ```c++
 // 有盈余
 if (bike[station] - perf >= 0) {
-	back += bike[station] - perf;
+    back += bike[station] - perf;
 }
 // 有亏损
 else {
-	int need = perf - bike[station];
-	/*
-	前面的盈余不足以抵亏损
-	亏损增加，盈余置0
-	*/
-	if (need > back) {
-		send += need - back;
-		back = 0;
-	}
-	/*
-	前面的盈余足以抵亏损
-	亏损不变，盈余减少
-	*/
-	else {
-		back -= need;
-	}
+    int need = perf - bike[station];
+    /*
+    前面的盈余不足以抵亏损
+    亏损增加，盈余置0
+    */
+    if (need > back) {
+        send += need - back;
+        back = 0;
+    }
+    /*
+    前面的盈余足以抵亏损
+    亏损不变，盈余减少
+    */
+    else {
+        back -= need;
+    }
 }
 ```
 ## 1021 Deepest Root (25 分)
@@ -204,17 +204,17 @@ cin处理后'\n'残留在缓冲区中，故需要getchar()。否则getline函数
 upper_bound函数返回在[L,R)内第一个大于x的位置。
 ```c++
 int upper_bound(int left, int right, int x) {
-	/*
-	return: [left, right], 返回right代表未找到
-	*/
-	while (left < right) {
-		int mid = (left + right) / 2;
-		if (sum[mid] > x)
-			right = mid;
-		else
-			left = mid + 1;
-	}
-	return left; //或者return right
+    /*
+    return: [left, right], 返回right代表未找到
+    */
+    while (left < right) {
+        int mid = (left + right) / 2;
+        if (sum[mid] > x)
+            right = mid;
+        else
+            left = mid + 1;
+    }
+    return left; //或者return right
 }
 ```
 ## 1045 Favorite Color Stripe (30 分)
@@ -419,5 +419,35 @@ void heap_sort(int n) {
         if (flg)
             break;
     }
+}
+```
+
+## 1101 Quick Sort (25 分)
+
+`left_to_right_max[MAX]`记录从左往右当前出现过的最大数。`right_to_left_min[MAX]`记录从右往左当前出现过的最小数。若`left_to_right_max[i] == right_to_left_min[i]`则可以作为pivot。
+
+## 1103 Integer Factorization (30 分)
+
+**DFS** 有选和不选两种选择
+
+## 1104 Sum of Number Segments (20 分)
+
+`double`和`int`相乘是玄学吧
+
+## 1107 Social Clusters (30 分)
+
+**并查集**,题目大意是以hobby为桥梁将用户联系起来。不要忘记初始化数组。
+
+- `father[x]=i`表示`x`号用户的集合父亲是`i`。
+
+- `hobby[h]=x`表示喜欢`h`爱好的一位用户是`x`。
+
+- `root[i]=k`表示以`i`为根的集合有`k`个用户。
+
+计算集合元素个数的过程：
+
+```c++
+for (int i = 1; i <= n; i++) {
+    root[find_father(i)]++;
 }
 ```
