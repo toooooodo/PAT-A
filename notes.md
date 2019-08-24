@@ -451,3 +451,33 @@ for (int i = 1; i <= n; i++) {
     root[find_father(i)]++;
 }
 ```
+
+## 1112 Stucked Keyboard (20 分)
+
+string, set, vector的应用。**注意：**
+
+```C++
+for (auto it = stu_vec.begin(); it != stu_vec.end(); it++) {
+    if (*it == ch) {
+        stu_vec.erase(it);
+        break;
+    }
+}
+```
+
+此处要即时`break`
+
+```C++
+string text = "1234";
+auto it = text.begin();
+text.erase(it);
+cout << (*it) << endl;  //输出2
+```
+
+## 1114 Family Property (25 分)
+
+并查集的应用
+
+## 1115 Counting Nodes in a BST (30 分)
+
+**BST**二叉搜索树，看清题目中的定义。用层序遍历或深度优先都可以。
