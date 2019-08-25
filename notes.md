@@ -481,3 +481,21 @@ cout << (*it) << endl;  //输出2
 ## 1115 Counting Nodes in a BST (30 分)
 
 **BST**二叉搜索树，看清题目中的定义。用层序遍历或深度优先都可以。
+
+## 1117 Eddington Number (25 分)
+
+排序。
+
+```c++
+int n, e = n;
+cin >> n;
+```
+
+这是一个错误写法。
+
+## 1119 Pre- and Post-order Traversals (30 分)
+
+**树的前序遍历+后序遍历->中序遍历。**
+前序遍历数组第一个元素`pre[pre_left]`与后序遍历数组的最后一个元素`post[post_right]`一定是根。后序遍历数组的倒数第二个元素`post[post_right - 1]`一定可以是右儿子，有可能可以是左儿子。在前序遍历数组中找到`index`使`pre[index] == post[post_right - 1]`。若`index - pre_left <= 1`说明`root`下只有一个分支，且该分支可以是左子树也可以是右子树。*注意*，当`pre_left == pre_right`时，`index - pre_left == 1`，但不能依据此判定树非唯一，所以这种情况需要特判。
+
+此外，最后一行需要输出换行符`\n`,否则测试点全部格式错误。
