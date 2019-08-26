@@ -499,3 +499,29 @@ cin >> n;
 前序遍历数组第一个元素`pre[pre_left]`与后序遍历数组的最后一个元素`post[post_right]`一定是根。后序遍历数组的倒数第二个元素`post[post_right - 1]`一定可以是右儿子，有可能可以是左儿子。在前序遍历数组中找到`index`使`pre[index] == post[post_right - 1]`。若`index - pre_left <= 1`说明`root`下只有一个分支，且该分支可以是左子树也可以是右子树。*注意*，当`pre_left == pre_right`时，`index - pre_left == 1`，但不能依据此判定树非唯一，所以这种情况需要特判。
 
 此外，最后一行需要输出换行符`\n`,否则测试点全部格式错误。
+
+## 1126 Eulerian Path (25 分)
+
+Eulerian Path首先要判断图是否连通
+
+## 1129 Recommendation System (25 分)
+
+`Sets are containers that store unique elements following a specific order.`set内部元素有序（非递减），若内部元素是结构体，则可以使用重载运算符构造想要的排序方式。
+
+```c++
+struct item {
+    int id;
+    int freq;
+    item(int id, int freq) : id(id), freq(freq) {}
+    bool operator < (const item &a) const {
+        if (freq != a.freq)
+            return freq > a.freq;
+        else
+            return id < a.id;
+    }
+};
+```
+
+## 1130 Infix Expression (25 分)
+
+**中缀表达式**， 中序遍历的变型
