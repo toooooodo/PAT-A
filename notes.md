@@ -525,3 +525,31 @@ struct item {
 ## 1130 Infix Expression (25 分)
 
 **中缀表达式**， 中序遍历的变型
+
+## 1131 Subway Map (30 分)
+
+图的**DFS**，`int line[MAX][MAX];`记录站点之间是几号线，`vector<int> subway[MAX];`记录站点的邻接站点。
+
+## 1132 Cut Integer (20 分)
+
+注意除数为0的情况
+
+## 1134 Vertex Cover (25 分)
+
+判断图的所有边是否和给定顶点集合内的任一顶点相连通。两种思路：
+
+- 遍历集合内的顶点，判断集合内的顶点是否能够覆盖所有的边。
+
+- 遍历图的所有边，判断是否有边的顶点不在集合内。
+
+1135 Is It A Red-Black Tree (30 分)
+
+红黑树的判定
+`tree insert(vector<int>& pre, vector<int>& in, int pre_left, int pre_right, int in_left, int in_right)`当使用`g++`编译器时，若`vector<>`参数不用引用，第一个测试点段错误，`clang++`编译器则答案正确。
+
+## 1139 First Contact (30 分)
+
+A---B---C---D，A与B、C与D一定是同性。
+`bool graph[MAX][MAX]`用来记录两个人之间是否存在朋友关系。
+`vector<int> same_gender_friends[MAX]`用来记录同性的朋友。
+在给定AD后，遍历A、D的所有同性朋友B、C，若BC之间存在朋友关系，则为一组解。
