@@ -553,3 +553,7 @@ A---B---C---D，A与B、C与D一定是同性。
 `bool graph[MAX][MAX]`用来记录两个人之间是否存在朋友关系。
 `vector<int> same_gender_friends[MAX]`用来记录同性的朋友。
 在给定AD后，遍历A、D的所有同性朋友B、C，若BC之间存在朋友关系，则为一组解。
+
+## 1143 Lowest Common Ancestor (30 分)
+
+找 lowest common ancestor (LCA) ，题目给出了树的先序遍历，没有必要重新构造出树结构。
