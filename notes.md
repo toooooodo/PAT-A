@@ -557,3 +557,7 @@ A---B---C---D，A与B、C与D一定是同性。
 ## 1143 Lowest Common Ancestor (30 分)
 
 找 lowest common ancestor (LCA) ，题目给出了树的先序遍历，没有必要重新构造出树结构。
+
+## 1148 Werewolf - Simple Version (20 分)
+
+## 1153 Decode Registration Card of PAT (25 分)
