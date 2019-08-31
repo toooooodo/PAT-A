@@ -161,9 +161,13 @@ else {
     }
 }
 ```
-## 1021 Deepest Root (25 分)
+
+## 1019 General Palindromic Number (20 分)
+
 进制转换，注意当radix>10时，如16，取余后有11、12、13等，不能将11、12、13的各位数字分开。
+
 ## 1022 Digital Library (30 分)
+
 本题思路很简单，但输入的处理有些坑。
 - cin
 	- cin>> 可以从键盘读取想要的数据，以空格，tab键，以及换行来作为分隔符
@@ -177,14 +181,29 @@ else {
 	- Note that any content in str before the call is replaced by the newly extracted sequence.
 
 **示例：**
+
 ```c++
 cin >> n;
 getchar();
 getline(cin, id);
 ```
+
 cin处理后'\n'残留在缓冲区中，故需要getchar()。否则getline函数读入的是'\n'。
+
+```c++
+while (cin >> key) {
+    key_to_id[key].insert(id);
+    char ch = getchar(); //分隔符残留在缓冲区中
+    if (ch == '\n')
+        break;
+}
+```
+
+逐个读入一行中以空格分界的单词。
+
 ## 1029 Median (25 分)
->  It is guaranteed that all the integers are in the range of **long int**.
+
+> It is guaranteed that all the integers are in the range of **long int**.
 
 **long int** 即 `long`
 
