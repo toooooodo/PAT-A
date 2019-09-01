@@ -216,9 +216,13 @@ while (cin >> key) {
 ## 1033 To Fill or Not to Fill (25 分)
 贪心算法
 《算法笔记 上机训练实战指南》**P152**
+
 ## 1040 Longest Symmetric String (25 分)
-**动态规划**
+
+**动态规划**，暴力解也能过。
+
 ## 1044 Shopping in Mars (25 分)
+
 **二分法**
 upper_bound函数返回在[L,R)内第一个大于x的位置。
 ```c++
