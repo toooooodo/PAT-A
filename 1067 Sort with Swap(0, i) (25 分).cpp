@@ -16,22 +16,20 @@ int main() {
 		pos[x] = i;
 	}
 	while (true) {
-		if (pos[0] != 0) {
+		while (pos[0] != 0) {
 			count++;
 			swap(pos[0], pos[pos[0]]);
 		}
-		else {
-			while (k < n) {
-				if (pos[k] != k) {
-					swap(pos[0], pos[k]);
-					count++;
-					break;
-				}
-				k++;
-			}
-			if (k == n)
+		while (k < n) {
+			if (pos[k] != k) {
+				swap(pos[0], pos[k]);
+				count++;
 				break;
+			}
+			k++;
 		}
+		if (k == n)
+			break;
 	}
 	printf("%d\n", count);
 	return 0;

@@ -5,52 +5,50 @@ using namespace std;
 
 #define MAX 1000
 
-struct mouse {
-	int rank;
+struct record {
 	int weight;
-}mice[MAX];
+	int rank;
+}records[MAX];
+queue<int> q;
 
 int main() {
-	int np, ng;
-	queue<int> q;
-	cin >> np >> ng;
-	for (int i = 0; i < np; i++)
-		cin >> mice[i].weight;
-	for (int i = 0; i < np; i++) {
-		int per;
-		cin >> per;
-		q.push(per);
+	int n, ng;
+	cin >> n >> ng;
+	for (int i = 0; i < n; i++)
+		cin >> records[i].weight;
+	for (int i = 0; i < n; i++) {
+		int x;
+		cin >> x;
+		q.push(x);
 	}
-	int now = np, group_num;
 	while (q.size() != 1) {
-		if (now%ng == 0)
-			group_num = now / ng;
+		int n_groups, total = q.size();
+		if (q.size() % ng == 0)
+			n_groups = q.size() / ng;
 		else
-			group_num = now / ng + 1;
-		for (int i = 0; i < group_num; i++) {
+			n_groups = q.size() / ng + 1;
+		for (int i = 0; i < n_groups; i++) {
 			int max_index = q.front();
+			records[max_index].rank = n_groups + 1;
 			q.pop();
-			mice[max_index].rank = group_num + 1;
-			for (int j = 1; j < ng; j++) {
-				if (i*ng + j == now)
-					break;
+			for (int j = i * ng + 1; j < (i + 1)*ng&&j < total; j++) {
 				int front = q.front();
 				q.pop();
-				if (mice[max_index].weight < mice[front].weight) {
+				records[front].rank = n_groups + 1;
+				if (records[front].weight > records[max_index].weight) {
 					max_index = front;
 				}
-				mice[front].rank = group_num + 1;
 			}
 			q.push(max_index);
 		}
-		now = group_num;
 	}
-	mice[q.front()].rank = 1;
-	for (int i = 0; i < np; i++) {
+	int front = q.front();
+	records[front].rank = 1;
+	for (int i = 0; i < n; i++) {
 		if (i == 0)
-			cout << mice[i].rank;
+			cout << records[i].rank;
 		else
-			cout << " " << mice[i].rank;
+			cout << " " << records[i].rank;
 	}
 	return 0;
 }
