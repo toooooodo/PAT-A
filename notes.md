@@ -566,7 +566,7 @@ struct item {
 
 - 遍历图的所有边，判断是否有边的顶点不在集合内。
 
-1135 Is It A Red-Black Tree (30 分)
+## 1135 Is It A Red-Black Tree (30 分)
 
 红黑树的判定
 `tree insert(vector<int>& pre, vector<int>& in, int pre_left, int pre_right, int in_left, int in_right)`当使用`g++`编译器时，若`vector<>`参数不用引用，第一个测试点段错误，`clang++`编译器则答案正确。
