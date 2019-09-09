@@ -111,11 +111,11 @@ BFS(u){
 计算费用时从00:00:00到dd:hh:mm计算可以避免跨天的问题，比如01:12:00到02:02:00
 ```c++
 double calculate(record a) {
-	double total = a.date * 60 * toll[24] + a.min * toll[a.hour];
-	for (int i = 0; i < a.hour; i++) {
-		total += toll[i] * 60;
-	}
-	return total / 100;
+    double total = a.date * 60 * toll[24] + a.min * toll[a.hour];
+    for (int i = 0; i < a.hour; i++) {
+        total += toll[i] * 60;
+    }
+    return total / 100;
 }
 ```
 ## 1017 Queueing at Bank (25 分)
@@ -250,20 +250,20 @@ string容易超时，数据量大时最好使用char[]。
 链表排序，使用静态链表。
 ```c++
 struct node {
-	int key;
-	int addr, next;
-	bool flag;
-	node() : flag (false) {}
+    int key;
+    int addr, next;
+    bool flag;
+    node() : flag (false) {}
 }lst[MAX];
 ```
 其中`flag`表示结点在链表中是否出现。
 对结点进行排序：
 ```c++
 bool cmp(node a, node b) {
-	if (a.flag == false || b.flag == false)
-		return a.flag > b.flag;
-	else
-		return a.key < b.key;
+    if (a.flag == false || b.flag == false)
+        return a.flag > b.flag;
+    else
+        return a.key < b.key;
 }
 ```
 
@@ -273,10 +273,10 @@ bool cmp(node a, node b) {
 ```c++
 sort(lst, lst + n, cmp);
 for (int i = 0; i < n; i++) {
-	if (age[lst[i].age] < 100) {
-		age[lst[i].age]++;
-		valid[valid_n++] = lst[i];
-	}
+    if (age[lst[i].age] < 100) {
+        age[lst[i].age]++;
+        valid[valid_n++] = lst[i];
+    }
 }
 ```
 ## 1056 Mice and Rice (25 分)
